@@ -7,3 +7,13 @@
 .input{
   width: 500px;
 }
+
+.videolist{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+  
+}
+ul li{
+  list-style: none;
+}
