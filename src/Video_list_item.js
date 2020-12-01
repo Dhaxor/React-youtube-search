@@ -1,16 +1,16 @@
 import React from 'react';
 
-const Videolistitem = ({video}) => {
+const Videolistitem = ({video,onVideoSelect}) => {
     
-    console.log(video)
+    // console.log(video)
 
     const Imageurl = video.snippet.thumbnails.default.url;
 
 
     return (
        
-        <li>
-            <img src={Imageurl} />
+        <li onClick={ () => onVideoSelect(video) }>
+            <img src={Imageurl}  alt="this is what i want" />
             <span>{video.snippet.title}</span>
 
         </li>

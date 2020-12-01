@@ -3,6 +3,7 @@ import TodoSearch from './TodoSearch';
 import Ytsearch from 'youtube-api-search';
 import React,{Component} from 'react';
 import Videolist from './Videolist';
+import Videodetail from './Videodetail';
 
 const api = 'AIzaSyAE17BN3MHIhLpyvn-NuN6usDLSWof_hXs';
 // ';
@@ -16,19 +17,29 @@ class App extends Component {
     constructor(props){
         super(props);
 
-        this.state = {videos:[]};
+        this.state = {
+          videos:[],
+          selectedVideo:null,
+        
+        };
         
         Ytsearch({key:api, term:'surfboards'}, (videos) => {
-          this.setState({videos})
+          this.setState({
+            videos,
+            selectedVideo:videos[0]
+          })
         })
     }
 
   render(){
   return (
     <div className="container">
-        <h1>Hello this is it</h1>
+        {/* <h1>Hello this is it</h1> */}
         <TodoSearch />
-        <Videolist  videos={this.state.videos} />
+        <Videodetail video={this.state.selectedVideo} />
+        <Videolist 
+          onVideoSelect={selectedVideo => this.setState({selectedVideo})}
+        videos={this.state.videos} />
     </div>
   );
 }

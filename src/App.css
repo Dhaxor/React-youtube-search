@@ -4,16 +4,29 @@
   margin: 50px auto;
 }
 
-.input{
+input{
   width: 500px;
+  position: relative;
+  /* right: -50px; */
 }
 
 .videolist{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
+  justify-content: center;
   
 }
 ul li{
   list-style: none;
+  position: relative;
+  left: -30px;
+}
+
+.container-box{
+  padding: 30px;
+}
+
+li:hover{
+  background-color: darkgrey;
 }

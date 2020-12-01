@@ -13,7 +13,7 @@ import React, {Component} from 'react'
 class todoSearch extends Component{
 
     render(){
-      return <input onChange={(event) => console.log(event.target.value)}  />
+      return <input onChange={(event) => console.log(event.target.value)}      placeholder="Search here.." />
     }
 
     // onHandleChange(event){
