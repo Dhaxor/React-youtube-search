@@ -13,12 +13,14 @@ import React, {Component} from 'react'
 class todoSearch extends Component{
 
     render(){
-      return <input onChange={(event) => console.log(event.target.value)}      placeholder="Search here.." />
+      return <input onChange={(event) => this.onHandleChange(event.target.value) }      placeholder="Search here.." />
     }
+    
+    onHandleChange(term){
+      this.setState({term});
 
-    // onHandleChange(event){
-    //     console.log(event.target.value);
-    // }
+      this.props.onSearchtermChange(term);
+    }
 }
 
 export default todoSearch;

@@ -1,5 +1,5 @@
 import './App.css';
-import TodoSearch from './TodoSearch';
+import SearchBar from './SearchBar';
 import Ytsearch from 'youtube-api-search';
 import React,{Component} from 'react';
 import Videolist from './Videolist';
@@ -22,20 +22,30 @@ class App extends Component {
           selectedVideo:null,
         
         };
-        
-        Ytsearch({key:api, term:'surfboards'}, (videos) => {
-          this.setState({
-            videos,
-            selectedVideo:videos[0]
-          })
-        })
-    }
+
+
+        this.videoSearch('surfboards')
+      }
+
+        videoSearch(term){
+          Ytsearch({key:api, term: term}, (videos) => {
+            this.setState({
+              videos,
+              selectedVideo:videos[0]
+            })
+          });
+        }
+
+
+
+
+    
 
   render(){
   return (
     <div className="container">
         {/* <h1>Hello this is it</h1> */}
-        <TodoSearch />
+        <SearchBar onSearchtermChange={term => this.videoSearch(term)} />
         <Videodetail video={this.state.selectedVideo} />
         <Videolist 
           onVideoSelect={selectedVideo => this.setState({selectedVideo})}
