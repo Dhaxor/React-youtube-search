@@ -1,14 +1,13 @@
 import './App.css';
+import _ from 'lodash';
 import SearchBar from './SearchBar';
 import Ytsearch from 'youtube-api-search';
 import React,{Component} from 'react';
 import Videolist from './Videolist';
 import Videodetail from './Videodetail';
 
-const api = 'AIzaSyAE17BN3MHIhLpyvn-NuN6usDLSWof_hXs';
-// ';
+const api = '';
 
-// AIzaSyBxQvM74tXn85-uP4gCMkmu2ckUw7hccDc
 
 
 
@@ -42,10 +41,13 @@ class App extends Component {
     
 
   render(){
+
+    const videoSearch = _.debounce((item) => {this.videoSearch(item)},300)
+
   return (
     <div className="container">
         {/* <h1>Hello this is it</h1> */}
-        <SearchBar onSearchtermChange={term => this.videoSearch(term)} />
+        <SearchBar onSearchtermChange={videoSearch} />
         <Videodetail video={this.state.selectedVideo} />
         <Videolist 
           onVideoSelect={selectedVideo => this.setState({selectedVideo})}
